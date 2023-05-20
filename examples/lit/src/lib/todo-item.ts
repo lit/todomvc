@@ -44,15 +44,14 @@ export class TodoItem extends LitElement {
 						<label @dblclick=${this.#beginEdit}> ${this.todo?.text} </label>
 						<button @click=${this.#deleteTodo} class="destroy"></button>
 					</div>
-					<form @submit=${this.#finishEdit}>
-						<input
-							class="edit"
-							type="text"
-							@keyup=${this.#captureEscape}
-							@blur=${this.#abortEdit}
-							.value=${this.todo?.text}
-						/>
-					</form>
+					<input
+						class="edit"
+						type="text"
+						@change=${this.#finishEdit}
+						@keyup=${this.#captureEscape}
+						@blur=${this.#abortEdit}
+						.value=${this.todo?.text}
+					/>
 				</li>
 			</ul>
 		`;
