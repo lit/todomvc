@@ -5,6 +5,7 @@ import { classMap } from "lit/directives/class-map.js";
 
 import { todoStyles } from "./todo.css.js";
 import { TodoFilter, Todos } from "./todos.js";
+import { updateOnEvent } from "./utils.js";
 
 @customElement("todo-footer")
 export class TodoFooter extends LitElement {
@@ -17,23 +18,12 @@ export class TodoFooter extends LitElement {
 		`,
 	];
 
+	@updateOnEvent('change')
 	@property({ attribute: false })
 	todoList?: Todos;
 
 	@property()
 	selectedFilter?: TodoFilter;
-
-	protected override willUpdate(changedProperties: PropertyValues<this>): void {
-		if (changedProperties.has("todoList")) {
-			const oldTodos = changedProperties.get("todoList");
-			oldTodos?.removeEventListener("change", this.#onTodoChange);
-		}
-		this.todoList?.addEventListener("change", this.#onTodoChange);
-	}
-
-	#onTodoChange = () => {
-		this.requestUpdate();
-	};
 
 	override render() {
 		return this.todoList?.all.length ?? 0 > 0

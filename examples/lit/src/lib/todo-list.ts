@@ -1,10 +1,4 @@
-import {
-	LitElement,
-	html,
-	css,
-	nothing,
-	PropertyValues,
-} from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import { customElement } from "lit/decorators/custom-element.js";
 import { property } from "lit/decorators/property.js";
 
@@ -12,6 +6,8 @@ import { todoStyles } from "./todo.css.js";
 import { TodoFilter, Todos } from "./todos.js";
 
 import "./todo-item.js";
+import { ToggleAllTodoEvent } from "./events.js";
+import { updateOnEvent } from "./utils.js";
 
 @customElement("todo-list")
 export class TodoList extends LitElement {
@@ -24,23 +20,12 @@ export class TodoList extends LitElement {
 		`,
 	];
 
+  @updateOnEvent('change')
 	@property({ attribute: false })
 	todoList?: Todos;
 
 	@property()
 	filter?: TodoFilter;
-
-	protected override willUpdate(changedProperties: PropertyValues<this>): void {
-		if (changedProperties.has("todoList")) {
-			const oldTodos = changedProperties.get("todoList");
-			oldTodos?.removeEventListener("change", this.#onTodoChange);
-		}
-		this.todoList?.addEventListener("change", this.#onTodoChange);
-	}
-
-	#onTodoChange = () => {
-		this.requestUpdate();
-	};
 
 	override render() {
 		return html`
@@ -64,6 +49,6 @@ export class TodoList extends LitElement {
 	}
 
 	#onToggleAllChange() {
-		console.log("#onToggleAllChange");
+		this.dispatchEvent(new ToggleAllTodoEvent());
 	}
 }

@@ -5,6 +5,7 @@ import { property } from "lit/decorators/property.js";
 import { todoStyles } from "./todo.css.js";
 import { TodoFilter, Todos } from "./todos.js";
 import { AddTodoEvent } from "./events.js";
+import { updateOnEvent } from "./utils.js";
 
 @customElement("todo-form")
 export class TodoForm extends LitElement {
@@ -17,6 +18,7 @@ export class TodoForm extends LitElement {
 		`,
 	];
 
+	@updateOnEvent('change')
 	@property({ attribute: false })
 	todoList?: Todos;
 

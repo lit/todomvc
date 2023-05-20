@@ -14,6 +14,7 @@ import {
 	ToggleAllTodoEvent,
 	EditTodoEvent,
 } from "./events.js";
+// import { updateOnEvent } from "./utils.js";
 
 @customElement("todo-app")
 export class TodoApp extends LitElement {
@@ -26,7 +27,8 @@ export class TodoApp extends LitElement {
 		`,
 	];
 
-	#todoList = new Todos();
+  // @updateOnEvent('change')
+	todoList = new Todos();
 
 	@property()
 	filter: TodoFilter = "all";
@@ -43,29 +45,29 @@ export class TodoApp extends LitElement {
 		return html` <section class="todoapp">
 			<header class="header">
 				<h1>todos</h1>
-				<todo-form .todoList=${this.#todoList}></todo-form>
+				<todo-form .todoList=${this.todoList}></todo-form>
 			</header>
 			<section class="main">
-				<todo-list .todoList=${this.#todoList}></todo-list>
+				<todo-list .todoList=${this.todoList}></todo-list>
 			</section>
-			<todo-footer .todoList=${this.#todoList} .selectedFilter=${this.filter}>
+			<todo-footer .todoList=${this.todoList} .selectedFilter=${this.filter}>
 			</todo-footer>
 		</section>`;
 	}
 
 	#onAddTodo = (e: AddTodoEvent) => {
-		this.#todoList.add(e.text);
+		this.todoList.add(e.text);
 	};
 
 	#onDeleteTodo = (e: DeleteTodoEvent) => {
-		this.#todoList.delete(e.id);
+		this.todoList.delete(e.id);
 	};
 
 	#onEditTodo = (e: EditTodoEvent) => {
-		this.#todoList.update(e.todo);
+		this.todoList.update(e.todo);
 	};
 
 	#onToggleAll = (_e: ToggleAllTodoEvent) => {
-		this.#todoList.toggleAll();
+		this.todoList.toggleAll();
 	};
 }
