@@ -1,0 +1,7 @@
+.tsbuildinfo
+
+/node_modules
+/lib
+
+index.js
+index.js.map

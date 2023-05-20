@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "wds",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@web/dev-server": "^0.2.1",
+    "todomvc-app-css": "^2.4.2",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "lit": "^3.0.0-pre.0",
+    "tslib": "^2.5.2"
+  }
+}
