@@ -18,7 +18,7 @@ export class TodoForm extends LitElement {
 		`,
 	];
 
-	@updateOnEvent('change')
+	@updateOnEvent("change")
 	@property({ attribute: false })
 	todoList?: Todos;
 
@@ -43,5 +43,11 @@ export class TodoForm extends LitElement {
 			this.dispatchEvent(new AddTodoEvent(value));
 		}
 		input.value = "";
+	}
+}
+
+declare global {
+	interface HTMLElementTagNameMap {
+		"todo-form": TodoForm;
 	}
 }

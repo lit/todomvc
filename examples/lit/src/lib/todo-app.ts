@@ -71,3 +71,10 @@ export class TodoApp extends LitElement {
 		this.todoList.toggleAll();
 	};
 }
+
+
+declare global {
+	interface HTMLElementTagNameMap {
+		"todo-app": TodoApp
+	}
+}

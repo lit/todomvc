@@ -52,3 +52,10 @@ export class TodoList extends LitElement {
 		this.dispatchEvent(new ToggleAllTodoEvent());
 	}
 }
+
+
+declare global {
+	interface HTMLElementTagNameMap {
+		"todo-list": TodoList
+	}
+}

@@ -1,4 +1,4 @@
-import { LitElement, html, css, nothing, PropertyValues } from "lit";
+import { LitElement, html, css, nothing } from "lit";
 import { customElement } from "lit/decorators/custom-element.js";
 import { property } from "lit/decorators/property.js";
 import { classMap } from "lit/directives/class-map.js";
@@ -18,7 +18,7 @@ export class TodoFooter extends LitElement {
 		`,
 	];
 
-	@updateOnEvent('change')
+	@updateOnEvent("change")
 	@property({ attribute: false })
 	todoList?: Todos;
 
@@ -86,4 +86,10 @@ function filterLink({
 		href="#/${filter}"
 		>${text}</a
 	>`;
+}
+
+declare global {
+	interface HTMLElementTagNameMap {
+		"todo-footer": TodoFooter
+	}
 }

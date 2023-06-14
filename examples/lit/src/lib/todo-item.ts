@@ -90,3 +90,10 @@ export class TodoItem extends LitElement {
 		(e.target as HTMLInputElement).value = this.todo?.text ?? "";
 	}
 }
+
+
+declare global {
+	interface HTMLElementTagNameMap {
+		"todo-item": TodoItem
+	}
+}
