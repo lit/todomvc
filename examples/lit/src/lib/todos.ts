@@ -67,7 +67,6 @@ export class Todos extends EventTarget {
 	}
 
 	add(text: string) {
-		console.log("add", text);
 		this.#todos.push({
 			text,
 			completed: false,
@@ -86,7 +85,6 @@ export class Todos extends EventTarget {
 	}
 
 	update(data: Todo) {
-		console.log("update", data);
 		const index = this.#todos.findIndex((todo) => todo.id === data.id);
 		const todo = this.#todos[index];
 

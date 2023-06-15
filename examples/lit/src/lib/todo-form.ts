@@ -38,7 +38,6 @@ export class TodoForm extends LitElement {
 	#onChange(e: Event) {
 		const input = e.target as HTMLInputElement;
 		const { value } = input;
-		console.log("#onChange", value, this.todoList);
 		if (value.length > 0) {
 			this.dispatchEvent(new AddTodoEvent(value));
 		}

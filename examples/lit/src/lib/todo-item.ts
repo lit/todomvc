@@ -64,7 +64,6 @@ export class TodoItem extends LitElement {
 	}
 
 	#deleteTodo() {
-		console.log("#deleteTodo");
 		this.dispatchEvent(new DeleteTodoEvent(this.todo!.id));
 	}
 
