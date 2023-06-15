@@ -22,10 +22,6 @@ export const todoStyles = css`
 		outline: 0;
 	}
 
-	.hidden {
-		display: none;
-	}
-
 	.new-todo,
 	.edit {
 		position: relative;
