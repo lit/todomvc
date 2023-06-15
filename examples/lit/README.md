@@ -27,12 +27,11 @@ Mutations are made centrally by the app component. Other component fire events t
 ## TODO
 
 1.  fix placeholder text styles
-2.  implement clear completed
-3.  Split the CSS per component
-4.  Remove extraneous HTML tags (like `<form>`), put more styling on hosts
-5.  Change CSS classes for simpler selectors
-6.  Move current filter state into Todos model
-7.  Check focus and tab behavior
-8.  Add Rollup build that chooses production Lit build and creates a single JS file
-9.  Check-in node dependencies like other implementations?
-10. Add Wireit?
+2.  Split the CSS per component
+3.  Remove extraneous HTML tags (like `<form>`), put more styling on hosts
+4.  Change CSS classes for simpler selectors
+5.  Move current filter state into Todos model
+6.  Check focus and tab behavior
+7.  Add Rollup build that chooses production Lit build and creates a single JS file
+8.  Check-in node dependencies like other implementations?
+9.  Add Wireit?

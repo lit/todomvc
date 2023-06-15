@@ -118,4 +118,9 @@ export class Todos extends EventTarget {
 		}));
 		this.#notifyChange();
 	}
+
+	clearCompleted() {
+		this.#todos = this.active as Todo[];
+		this.#notifyChange();
+	}
 }

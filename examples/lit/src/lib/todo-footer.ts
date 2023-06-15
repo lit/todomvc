@@ -68,7 +68,7 @@ export class TodoFooter extends LitElement {
 	}
 
 	#onClearCompletedClick() {
-		console.log("#onClearCompletedClick");
+		this.todoList?.clearCompleted();
 	}
 }
 
