@@ -90,6 +90,6 @@ function filterLink({
 
 declare global {
 	interface HTMLElementTagNameMap {
-		"todo-footer": TodoFooter
+		"todo-footer": TodoFooter;
 	}
 }

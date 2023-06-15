@@ -29,7 +29,7 @@ export class TodoForm extends LitElement {
 		return html` <input
 			@change=${this.#onChange}
 			class="new-todo"
-			autofocus="autofocus"
+			autofocus
 			autocomplete="off"
 			placeholder="what needs to be done?"
 		/>`;
