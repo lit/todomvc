@@ -32,4 +32,3 @@ To run the fully optimized prod build, then:
 
 1.  Remove extraneous HTML tags (like `<form>`), put more styling on hosts
 2.  Change CSS classes for simpler selectors
-3.  Check focus and tab behavior
