@@ -38,7 +38,7 @@ export class TodoItem extends LitElement {
 						<input
 							class="toggle"
 							type="checkbox"
-							.checked=${this.todo?.completed}
+							.checked=${this.todo?.completed ?? false}
 							@change=${this.#toggleTodo}
 						/>
 						<label @dblclick=${this.#beginEdit}> ${this.todo?.text} </label>
@@ -50,7 +50,7 @@ export class TodoItem extends LitElement {
 						@change=${this.#finishEdit}
 						@keyup=${this.#captureEscape}
 						@blur=${this.#abortEdit}
-						.value=${this.todo?.text}
+						.value=${this.todo?.text ?? ""}
 					/>
 				</li>
 			</ul>
@@ -58,7 +58,6 @@ export class TodoItem extends LitElement {
 	}
 
 	#toggleTodo() {
-		console.log("#toggleTodo");
 		this.dispatchEvent(
 			new EditTodoEvent({ ...this.todo!, completed: !this.todo!.completed })
 		);
@@ -91,9 +90,8 @@ export class TodoItem extends LitElement {
 	}
 }
 
-
 declare global {
 	interface HTMLElementTagNameMap {
-		"todo-item": TodoItem
+		"todo-item": TodoItem;
 	}
 }
