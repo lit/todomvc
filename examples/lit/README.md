@@ -30,5 +30,4 @@ To run the fully optimized prod build, then:
 
 ## TODO
 
-1.  Remove extraneous HTML tags (like `<form>`), put more styling on hosts
-2.  Change CSS classes for simpler selectors
+1.  Change CSS classes for simpler selectors

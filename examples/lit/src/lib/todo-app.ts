@@ -24,8 +24,6 @@ export class TodoApp extends LitElement {
 		css`
 			:host {
 				display: block;
-			}
-			.todoapp {
 				background: #fff;
 				margin: 130px 0 40px 0;
 				position: relative;
@@ -79,7 +77,7 @@ export class TodoApp extends LitElement {
 	}
 
 	override render() {
-		return html` <section class="todoapp">
+		return html`<section>
 			<header class="header">
 				<h1>todos</h1>
 				<todo-form .todoList=${this.todoList}></todo-form>
@@ -87,7 +85,7 @@ export class TodoApp extends LitElement {
 			<section class="main">
 				<todo-list .todoList=${this.todoList}></todo-list>
 			</section>
-			<todo-footer .todoList=${this.todoList}> </todo-footer>
+			<todo-footer .todoList=${this.todoList}></todo-footer>
 		</section>`;
 	}
 

@@ -40,7 +40,7 @@ export class TodoForm extends LitElement {
 	todoList?: Todos;
 
 	override render() {
-		return html` <input
+		return html`<input
 			@change=${this.#onChange}
 			class="new-todo"
 			autofocus

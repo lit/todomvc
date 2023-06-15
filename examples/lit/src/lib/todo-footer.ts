@@ -15,16 +15,13 @@ export class TodoFooter extends LitElement {
 		css`
 			:host {
 				display: block;
-			}
-			.footer {
 				color: #777;
 				padding: 10px 15px;
 				height: 20px;
 				text-align: center;
 				border-top: 1px solid #e6e6e6;
 			}
-
-			.footer:before {
+			:host:before {
 				content: "";
 				position: absolute;
 				right: 0;
@@ -96,8 +93,7 @@ export class TodoFooter extends LitElement {
 
 	override render() {
 		return this.todoList?.all.length ?? 0 > 0
-			? html` <footer class="footer">
-					<span class="todo-count">
+			? html`<span class="todo-count">
 						<strong>${this.todoList?.active.length}</strong>
 						items left
 					</span>
@@ -125,14 +121,13 @@ export class TodoFooter extends LitElement {
 						</li>
 					</ul>
 					${this.todoList?.completed.length ?? 0 > 0
-						? html` <button
+						? html`<button
 								@click=${this.#onClearCompletedClick}
 								class="clear-completed"
 						  >
 								Clear Completed
 						  </button>`
-						: nothing}
-			  </footer>`
+						: nothing}`
 			: nothing;
 	}
 
