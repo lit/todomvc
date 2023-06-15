@@ -26,23 +26,23 @@ export class TodoItem extends LitElement {
 				border-bottom: none;
 			}
 
-			li.editing {
+			.editing {
 				border-bottom: none;
 				padding: 0;
 			}
 
-			li.editing .edit {
+			.editing .edit {
 				display: block;
 				width: 506px;
 				padding: 12px 16px;
 				margin: 0 0 0 43px;
 			}
 
-			li.editing .view {
+			.editing .view {
 				display: none;
 			}
 
-			li .toggle {
+			.toggle {
 				text-align: center;
 				width: 40px;
 				/* auto, since non-WebKit browsers doesn't support input styling */
@@ -56,11 +56,11 @@ export class TodoItem extends LitElement {
 				appearance: none;
 			}
 
-			li .toggle {
+			.toggle {
 				opacity: 0;
 			}
 
-			li .toggle + label {
+			.toggle + label {
 				/*
 		Firefox requires '#' to be escaped - https://bugzilla.mozilla.org/show_bug.cgi?id=922433
 		IE and Edge requires *everything* to be escaped to render, so we do that instead of just the '#' - https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/7157459/
@@ -70,11 +70,11 @@ export class TodoItem extends LitElement {
 				background-position: center left;
 			}
 
-			li .toggle:checked + label {
+			.toggle:checked + label {
 				background-image: url("data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%20width%3D%2240%22%20height%3D%2240%22%20viewBox%3D%22-10%20-18%20100%20135%22%3E%3Ccircle%20cx%3D%2250%22%20cy%3D%2250%22%20r%3D%2250%22%20fill%3D%22none%22%20stroke%3D%22%23bddad5%22%20stroke-width%3D%223%22/%3E%3Cpath%20fill%3D%22%235dc2af%22%20d%3D%22M72%2025L42%2071%2027%2056l-4%204%2020%2020%2034-52z%22/%3E%3C/svg%3E");
 			}
 
-			li label {
+			label {
 				word-break: break-all;
 				padding: 15px 15px 15px 60px;
 				display: block;
@@ -82,12 +82,12 @@ export class TodoItem extends LitElement {
 				transition: color 0.4s;
 			}
 
-			li.completed label {
+			.completed label {
 				color: #d9d9d9;
 				text-decoration: line-through;
 			}
 
-			li .destroy {
+			.destroy {
 				display: none;
 				position: absolute;
 				top: 0;
@@ -102,11 +102,11 @@ export class TodoItem extends LitElement {
 				transition: color 0.2s ease-out;
 			}
 
-			li .destroy:hover {
+			.destroy:hover {
 				color: #af5b5e;
 			}
 
-			li .destroy:after {
+			.destroy:after {
 				content: "×";
 			}
 
@@ -114,11 +114,11 @@ export class TodoItem extends LitElement {
 				display: block;
 			}
 
-			li .edit {
+			.edit {
 				display: none;
 			}
 
-			li.editing:last-child {
+			.editing:last-child {
 				margin-bottom: -1px;
 			}
 		`,

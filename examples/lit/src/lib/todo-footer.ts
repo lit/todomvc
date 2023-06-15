@@ -39,7 +39,7 @@ export class TodoFooter extends LitElement {
 				text-align: left;
 			}
 
-			.todo-count strong {
+			strong {
 				font-weight: 300;
 			}
 
@@ -52,11 +52,11 @@ export class TodoFooter extends LitElement {
 				left: 0;
 			}
 
-			.filters li {
+			li {
 				display: inline;
 			}
 
-			.filters li a {
+			a {
 				color: inherit;
 				margin: 3px;
 				padding: 3px 7px;
@@ -65,11 +65,11 @@ export class TodoFooter extends LitElement {
 				border-radius: 3px;
 			}
 
-			.filters li a:hover {
+			a:hover {
 				border-color: rgba(175, 47, 47, 0.1);
 			}
 
-			.filters li a.selected {
+			a.selected {
 				border-color: rgba(175, 47, 47, 0.2);
 			}
 			.clear-completed,

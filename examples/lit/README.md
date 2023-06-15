@@ -28,6 +28,3 @@ To run the fully optimized prod build, then:
 1. `npm run serve:prod`
 2. Navigate your browser to http://localhost:8000/rollup/
 
-## TODO
-
-1.  Change CSS classes for simpler selectors
