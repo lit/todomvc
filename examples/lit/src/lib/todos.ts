@@ -46,6 +46,10 @@ export class Todos extends EventTarget {
 		return this.#todos.filter((todo) => todo.completed);
 	}
 
+	get allCompleted(): boolean {
+		return this.#todos.every((todo) => todo.completed);
+	}
+
 	filtered(filter: TodoFilter | undefined) {
 		switch (filter) {
 			case "active":

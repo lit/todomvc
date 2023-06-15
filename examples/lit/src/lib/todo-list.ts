@@ -70,6 +70,7 @@ export class TodoList extends LitElement {
 							id="toggle-all"
 							type="checkbox"
 							class="toggle-all"
+							.checked=${this.todoList?.allCompleted ?? false}
 						/>
 						<label for="toggle-all"> Mark all as complete </label>
 				  `
