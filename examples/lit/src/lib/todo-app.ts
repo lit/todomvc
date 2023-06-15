@@ -1,10 +1,9 @@
 import { LitElement, html, css } from "lit";
 import { customElement } from "lit/decorators/custom-element.js";
-import { property } from "lit/decorators/property.js";
 import { state } from "lit/decorators/state.js";
 
 import { todoStyles } from "./todo.css.js";
-import { TodoFilter, Todos, isTodoFilter } from "./todos.js";
+import { Todos } from "./todos.js";
 
 import "./todo-list.js";
 import "./todo-form.js";
@@ -54,10 +53,7 @@ export class TodoApp extends LitElement {
 
 	@updateOnEvent("change")
 	@state()
-	todoList = new Todos();
-
-	@property()
-	filter: TodoFilter = this.#filterFromUrl();
+	readonly todoList = new Todos();
 
 	constructor() {
 		super();
@@ -69,31 +65,24 @@ export class TodoApp extends LitElement {
 
 	override connectedCallback(): void {
 		super.connectedCallback();
-		window.addEventListener("hashchange", this.#onHashChange);
+		this.todoList.connect();
 	}
 
 	override disconnectedCallback(): void {
 		super.disconnectedCallback();
-		window.removeEventListener("hashchange", this.#onHashChange);
+		this.todoList.disconnect();
 	}
 
 	override render() {
 		return html` <section class="todoapp">
 			<header class="header">
 				<h1>todos</h1>
-				<todo-form
-					.todoList=${this.todoList}
-					.filter=${this.filter}
-				></todo-form>
+				<todo-form .todoList=${this.todoList}></todo-form>
 			</header>
 			<section class="main">
-				<todo-list
-					.todoList=${this.todoList}
-					.filter=${this.filter}
-				></todo-list>
+				<todo-list .todoList=${this.todoList}></todo-list>
 			</section>
-			<todo-footer .todoList=${this.todoList} .selectedFilter=${this.filter}>
-			</todo-footer>
+			<todo-footer .todoList=${this.todoList}> </todo-footer>
 		</section>`;
 	}
 
@@ -112,18 +101,6 @@ export class TodoApp extends LitElement {
 	#onToggleAll = (_e: ToggleAllTodoEvent) => {
 		this.todoList.toggleAll();
 	};
-
-	#onHashChange = () => {
-		this.filter = this.#filterFromUrl();
-	};
-
-	#filterFromUrl() {
-		let filter = /#\/(.*)/.exec(window.location.hash)?.[1];
-		if (isTodoFilter(filter)) {
-			return filter;
-		}
-		return "all";
-	}
 }
 
 declare global {

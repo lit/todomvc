@@ -6,7 +6,7 @@ export interface Todo {
 
 const todoFilters = ["all", "active", "completed"] as const;
 export type TodoFilter = (typeof todoFilters)[number];
-export function isTodoFilter(value: string | undefined): value is TodoFilter {
+function isTodoFilter(value: string | undefined): value is TodoFilter {
 	return todoFilters.includes(value as TodoFilter);
 }
 
@@ -18,6 +18,7 @@ export function isTodoFilter(value: string | undefined): value is TodoFilter {
 export class Todos extends EventTarget {
 	#nextId;
 	#todos: Array<Todo>;
+	#filter: TodoFilter = this.#filterFromUrl();
 	constructor() {
 		super();
 		const stored = window.localStorage.getItem("todos");
@@ -50,8 +51,16 @@ export class Todos extends EventTarget {
 		return this.#todos.every((todo) => todo.completed);
 	}
 
-	filtered(filter: TodoFilter | undefined) {
-		switch (filter) {
+	connect() {
+		window.addEventListener("hashchange", this.#onHashChange);
+	}
+
+	disconnect() {
+		window.removeEventListener("hashchange", this.#onHashChange);
+	}
+
+	filtered() {
+		switch (this.#filter) {
 			case "active":
 				return this.active;
 			case "completed":
@@ -126,5 +135,26 @@ export class Todos extends EventTarget {
 	clearCompleted() {
 		this.#todos = this.active as Todo[];
 		this.#notifyChange();
+	}
+
+	get filter(): TodoFilter {
+		return this.#filter;
+	}
+
+	set filter(filter: TodoFilter) {
+		this.#filter = filter;
+		this.#notifyChange();
+	}
+
+	#onHashChange = () => {
+		this.filter = this.#filterFromUrl();
+	};
+
+	#filterFromUrl() {
+		let filter = /#\/(.*)/.exec(window.location.hash)?.[1];
+		if (isTodoFilter(filter)) {
+			return filter;
+		}
+		return "all";
 	}
 }

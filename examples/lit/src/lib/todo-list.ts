@@ -4,7 +4,7 @@ import { property } from "lit/decorators/property.js";
 import { repeat } from "lit/directives/repeat.js";
 
 import { todoStyles } from "./todo.css.js";
-import { TodoFilter, Todos } from "./todos.js";
+import { Todos } from "./todos.js";
 
 import "./todo-item.js";
 import { ToggleAllTodoEvent } from "./events.js";
@@ -58,9 +58,6 @@ export class TodoList extends LitElement {
 	@property({ attribute: false })
 	todoList?: Todos;
 
-	@property()
-	filter?: TodoFilter;
-
 	override render() {
 		return html`
 			${(this.todoList?.all.length ?? 0) > 0
@@ -77,7 +74,7 @@ export class TodoList extends LitElement {
 				: nothing}
 			<ul class="todo-list">
 				${repeat(
-					this.todoList?.filtered(this.filter) ?? [],
+					this.todoList?.filtered() ?? [],
 					(todo) => todo.id,
 					(todo) => html`<todo-item .todo=${todo}></todo-item>`
 				)}

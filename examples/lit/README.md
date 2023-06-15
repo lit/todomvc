@@ -14,7 +14,7 @@ This implementation doesn't use a state management library. It models the Todo d
 
 Many other state management solutions are possible with Lit, including Redux, MobX, various signals libraries, etc. Using a plain class is just one of the simplest options, that's as vanilla as possible.
 
-Mutations are made centrally by the app component. Other component fire events to notify the app of change requests.
+Mutations are made centrally by the app component. Other components fire events to notify the app of change requests.
 
 ## Building and running this example
 
@@ -26,9 +26,9 @@ Mutations are made centrally by the app component. Other component fire events t
 
 ## TODO
 
-1.  Remove extraneous HTML tags (like `<form>`), put more styling on hosts
-2.  Change CSS classes for simpler selectors
-3.  Move current filter state into Todos model
+1.  Move clear completed logic to app component.
+2.  Remove extraneous HTML tags (like `<form>`), put more styling on hosts
+3.  Change CSS classes for simpler selectors
 4.  Check focus and tab behavior
 5.  Add Rollup build that chooses production Lit build and creates a single JS file
 6.  Check-in node dependencies like other implementations?

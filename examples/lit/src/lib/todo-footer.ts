@@ -4,7 +4,7 @@ import { property } from "lit/decorators/property.js";
 import { classMap } from "lit/directives/class-map.js";
 
 import { todoStyles } from "./todo.css.js";
-import { TodoFilter, Todos } from "./todos.js";
+import { Todos } from "./todos.js";
 import { updateOnEvent } from "./utils.js";
 
 @customElement("todo-footer")
@@ -93,9 +93,6 @@ export class TodoFooter extends LitElement {
 	@property({ attribute: false })
 	todoList?: Todos;
 
-	@property()
-	selectedFilter?: TodoFilter;
-
 	override render() {
 		return this.todoList?.all.length ?? 0 > 0
 			? html` <footer class="footer">
@@ -108,21 +105,21 @@ export class TodoFooter extends LitElement {
 							${filterLink({
 								text: "All",
 								filter: "all",
-								selectedFilter: this.selectedFilter,
+								selectedFilter: this.todoList?.filter,
 							})}
 						</li>
 						<li>
 							${filterLink({
 								text: "Active",
 								filter: "active",
-								selectedFilter: this.selectedFilter,
+								selectedFilter: this.todoList?.filter,
 							})}
 						</li>
 						<li>
 							${filterLink({
 								text: "Completed",
 								filter: "completed",
-								selectedFilter: this.selectedFilter,
+								selectedFilter: this.todoList?.filter,
 							})}
 						</li>
 					</ul>
