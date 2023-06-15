@@ -1,5 +1,9 @@
 import { ReactiveElement } from "lit";
 
+interface ListenerCarryingElement extends ReactiveElement {
+	__updateOnEventListener?: () => void;
+}
+
 /**
  * A property decorator that subscribes to an event on the property value and
  * calls `requestUpdate` when the event fires.
@@ -8,7 +12,8 @@ import { ReactiveElement } from "lit";
  * to enforce that the property value is an `EventTarget`.
  */
 export const updateOnEvent =
-	(eventName: string) => (target: ReactiveElement, propertyKey: string) => {
+	(eventName: string) =>
+	(target: ListenerCarryingElement, propertyKey: string) => {
 		const descriptor = Object.getOwnPropertyDescriptor(target, propertyKey)!;
 		if (
 			descriptor == null ||
@@ -21,13 +26,14 @@ export const updateOnEvent =
 			);
 		}
 		const { get, set } = descriptor;
-		const requestUpdate = () => target.requestUpdate();
 		const newDescriptor = {
 			...descriptor,
-			set(this: ReactiveElement, v: EventTarget) {
+			set(this: ListenerCarryingElement, v: EventTarget) {
+				const listener = (this.__updateOnEventListener ??= () =>
+					this.requestUpdate());
 				const oldValue = get!.call(this);
-				oldValue?.removeEventListener?.(eventName, requestUpdate);
-				v?.addEventListener?.(eventName, requestUpdate);
+				oldValue?.removeEventListener?.(eventName, listener);
+				v?.addEventListener?.(eventName, listener);
 				return set!.call(this, v);
 			},
 		};
