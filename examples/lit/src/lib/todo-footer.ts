@@ -6,6 +6,7 @@ import { classMap } from "lit/directives/class-map.js";
 import { todoStyles } from "./todo.css.js";
 import { Todos } from "./todos.js";
 import { updateOnEvent } from "./utils.js";
+import { ClearCompletedEvent } from "./events.js";
 
 @customElement("todo-footer")
 export class TodoFooter extends LitElement {
@@ -136,7 +137,7 @@ export class TodoFooter extends LitElement {
 	}
 
 	#onClearCompletedClick() {
-		this.todoList?.clearCompleted();
+		this.dispatchEvent(new ClearCompletedEvent());
 	}
 }
 

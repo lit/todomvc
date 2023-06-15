@@ -26,10 +26,9 @@ Mutations are made centrally by the app component. Other components fire events 
 
 ## TODO
 
-1.  Move clear completed logic to app component.
-2.  Remove extraneous HTML tags (like `<form>`), put more styling on hosts
-3.  Change CSS classes for simpler selectors
-4.  Check focus and tab behavior
-5.  Add Rollup build that chooses production Lit build and creates a single JS file
-6.  Check-in node dependencies like other implementations?
-7.  Add Wireit?
+1.  Remove extraneous HTML tags (like `<form>`), put more styling on hosts
+2.  Change CSS classes for simpler selectors
+3.  Check focus and tab behavior
+4.  Add Rollup build that chooses production Lit build and creates a single JS file
+5.  Check-in node dependencies like other implementations?
+6.  Add Wireit?

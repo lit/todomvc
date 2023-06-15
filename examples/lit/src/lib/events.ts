@@ -53,6 +53,17 @@ export class ToggleAllTodoEvent extends Event {
 	}
 }
 
+/**
+ * An event that represents a request to clear all completed todos.
+ */
+export class ClearCompletedEvent extends Event {
+	static readonly eventName = "clear-completed" as const;
+
+	constructor() {
+		super(ClearCompletedEvent.eventName, { bubbles: true, composed: true });
+	}
+}
+
 declare global {
 	interface HTMLElementEventMap {
 		"todo-add": AddTodoEvent;

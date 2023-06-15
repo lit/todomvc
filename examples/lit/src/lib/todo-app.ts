@@ -13,6 +13,7 @@ import {
 	DeleteTodoEvent,
 	ToggleAllTodoEvent,
 	EditTodoEvent,
+	ClearCompletedEvent,
 } from "./events.js";
 import { updateOnEvent } from "./utils.js";
 
@@ -61,6 +62,10 @@ export class TodoApp extends LitElement {
 		this.addEventListener(DeleteTodoEvent.eventName, this.#onDeleteTodo);
 		this.addEventListener(EditTodoEvent.eventName, this.#onEditTodo);
 		this.addEventListener(ToggleAllTodoEvent.eventName, this.#onToggleAll);
+		this.addEventListener(
+			ClearCompletedEvent.eventName,
+			this.#onClearCompleted
+		);
 	}
 
 	override connectedCallback(): void {
@@ -100,6 +105,10 @@ export class TodoApp extends LitElement {
 
 	#onToggleAll = (_e: ToggleAllTodoEvent) => {
 		this.todoList.toggleAll();
+	};
+
+	#onClearCompleted = (_e: ClearCompletedEvent) => {
+		this.todoList.clearCompleted();
 	};
 }
 
