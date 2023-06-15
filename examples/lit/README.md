@@ -26,12 +26,11 @@ Mutations are made centrally by the app component. Other component fire events t
 
 ## TODO
 
-1.  Split the CSS per component
-2.  Toggle all should be checked when all todos are checked
-3.  Remove extraneous HTML tags (like `<form>`), put more styling on hosts
-4.  Change CSS classes for simpler selectors
-5.  Move current filter state into Todos model
-6.  Check focus and tab behavior
-7.  Add Rollup build that chooses production Lit build and creates a single JS file
-8.  Check-in node dependencies like other implementations?
-9.  Add Wireit?
+1.  Toggle all should be checked when all todos are checked
+2.  Remove extraneous HTML tags (like `<form>`), put more styling on hosts
+3.  Change CSS classes for simpler selectors
+4.  Move current filter state into Todos model
+5.  Check focus and tab behavior
+6.  Add Rollup build that chooses production Lit build and creates a single JS file
+7.  Check-in node dependencies like other implementations?
+8.  Add Wireit?
