@@ -21,7 +21,7 @@ Mutations are made centrally by the app component. Other components fire events 
 1. `cd examples/lit`
 2. `npm ci`
 3. `npm run serve --watch`
-4. Navigate your browser to http://localhost:8000
+4. Navigate your browser to http://localhost:8000 or http://localhost:8000/esbuild for a minified production build.
 
 ## TODO
 

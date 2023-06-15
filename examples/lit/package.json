@@ -3,10 +3,12 @@
   "type": "module",
   "scripts": {
     "serve": "wireit",
-    "build": "wireit"
+    "build": "wireit",
+    "esbuild": "wireit"
   },
   "devDependencies": {
     "@web/dev-server": "^0.2.1",
+    "esbuild": "^0.18.3",
     "todomvc-app-css": "^2.4.2",
     "typescript": "^5.0.4"
   },
@@ -17,9 +19,11 @@
   "wireit": {
     "serve": {
       "dependencies": [
-        "build"
+        "build", "esbuild"
       ],
-      "files": ["web-dev-server.config.js"],
+      "files": [
+        "web-dev-server.config.js"
+      ],
       "service": true,
       "command": "wds"
     },
@@ -28,9 +32,23 @@
         "src/**/*.ts",
         "tsconfig.json"
       ],
-      "output": ["index.js", "index.js.map", "lib", ".tsbuildinfo"],
+      "output": [
+        "index.js",
+        "index.js.map",
+        "lib",
+        ".tsbuildinfo"
+      ],
       "clean": false,
       "command": "tsc"
+    },
+    "esbuild": {
+      "files": [
+        "src/**/*.ts"
+      ],
+      "output": [
+        "esbuild/index.js"
+      ],
+      "command": "esbuild --target=es2022 src/index.ts --bundle --minify --outfile=esbuild/index.js"
     }
   }
 }
