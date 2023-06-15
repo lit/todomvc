@@ -26,8 +26,8 @@ Mutations are made centrally by the app component. Other component fire events t
 
 ## TODO
 
-1.  fix placeholder text styles
-2.  Split the CSS per component
+1.  Split the CSS per component
+2.  Toggle all should be checked when all todos are checked
 3.  Remove extraneous HTML tags (like `<form>`), put more styling on hosts
 4.  Change CSS classes for simpler selectors
 5.  Move current filter state into Todos model

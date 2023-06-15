@@ -18,6 +18,39 @@ export class TodoList extends LitElement {
 			:host {
 				display: block;
 			}
+			.todo-list {
+				margin: 0;
+				padding: 0;
+				list-style: none;
+			}
+			.toggle-all {
+				text-align: center;
+				border: none; /* Mobile Safari */
+				opacity: 0;
+				position: absolute;
+			}
+
+			.toggle-all + label {
+				width: 60px;
+				height: 34px;
+				font-size: 0;
+				position: absolute;
+				top: -52px;
+				left: -13px;
+				-webkit-transform: rotate(90deg);
+				transform: rotate(90deg);
+			}
+
+			.toggle-all + label:before {
+				content: "❯";
+				font-size: 22px;
+				color: #e6e6e6;
+				padding: 10px 27px 10px 27px;
+			}
+
+			.toggle-all:checked + label:before {
+				color: #737373;
+			}
 		`,
 	];
 

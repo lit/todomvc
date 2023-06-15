@@ -15,6 +15,23 @@ export class TodoForm extends LitElement {
 			:host {
 				display: block;
 			}
+			input::-webkit-input-placeholder {
+				font-style: italic;
+				font-weight: 300;
+				color: #e6e6e6;
+			}
+
+			input::-moz-placeholder {
+				font-style: italic;
+				font-weight: 300;
+				color: #e6e6e6;
+			}
+
+			input::input-placeholder {
+				font-style: italic;
+				font-weight: 300;
+				color: #e6e6e6;
+			}
 		`,
 	];
 
