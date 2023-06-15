@@ -21,12 +21,16 @@ Mutations are made centrally by the app component. Other components fire events 
 1. `cd examples/lit`
 2. `npm ci`
 3. `npm run serve --watch`
-4. Navigate your browser to http://localhost:8000 or http://localhost:8000/esbuild for a minified production build.
+4. Navigate your browser to http://localhost:8000 or http://localhost:8000/esbuild for a minified build.
+
+To run the fully optimized prod build, then:
+
+1. `npm run serve:prod`
+2. Navigate your browser to http://localhost:8000/rollup/
 
 ## TODO
 
 1.  Remove extraneous HTML tags (like `<form>`), put more styling on hosts
 2.  Change CSS classes for simpler selectors
 3.  Check focus and tab behavior
-4.  Add Rollup build that chooses production Lit build and creates a single JS file
-5.  Check-in node dependencies like other implementations?
+4.  Check-in node dependencies like other implementations?
