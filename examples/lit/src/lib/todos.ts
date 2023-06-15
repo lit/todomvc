@@ -4,7 +4,11 @@ export interface Todo {
 	completed: boolean;
 }
 
-export type TodoFilter = "all" | "active" | "completed";
+const todoFilters = ["all", "active", "completed"] as const;
+export type TodoFilter = (typeof todoFilters)[number];
+export function isTodoFilter(value: string | undefined): value is TodoFilter {
+	return todoFilters.includes(value as TodoFilter);
+}
 
 /**
  * A mutable, observable container for a todo list.
@@ -12,9 +16,23 @@ export type TodoFilter = "all" | "active" | "completed";
  * @fires a `change` event when the todo list changes.
  */
 export class Todos extends EventTarget {
-	#nextId = 1;
-
-	#todos: Array<Todo> = [];
+	#nextId;
+	#todos: Array<Todo>;
+	constructor() {
+		super();
+		const stored = window.localStorage.getItem("todos");
+		let deserialized: { todos: Array<Todo>; nextId: number } | undefined;
+		try {
+			deserialized = stored && JSON.parse(stored);
+		} catch {}
+		if (deserialized) {
+			this.#todos = deserialized.todos;
+			this.#nextId = deserialized.nextId;
+		} else {
+			this.#todos = [];
+			this.#nextId = 1;
+		}
+	}
 
 	get all(): ReadonlyArray<Todo> {
 		return this.#todos;
@@ -28,7 +46,23 @@ export class Todos extends EventTarget {
 		return this.#todos.filter((todo) => todo.completed);
 	}
 
+	filtered(filter: TodoFilter | undefined) {
+		switch (filter) {
+			case "active":
+				return this.active;
+			case "completed":
+				return this.completed;
+			case "all":
+			case undefined:
+				return this.all;
+		}
+	}
+
 	#notifyChange() {
+		window.localStorage.setItem(
+			"todos",
+			JSON.stringify({ todos: this.#todos, nextId: this.#nextId })
+		);
 		this.dispatchEvent(new Event("change"));
 	}
 
