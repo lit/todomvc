@@ -1,0 +1,87 @@
+{
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "serve": "wireit",
+    "serve:prod": "wireit",
+    "build": "wireit",
+    "esbuild": "wireit",
+    "rollup": "wireit"
+  },
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.1.0",
+    "@rollup/plugin-terser": "^0.4.3",
+    "@rollup/plugin-typescript": "^11.1.1",
+    "@web/dev-server": "^0.2.1",
+    "@web/rollup-plugin-copy": "^0.4.0",
+    "@web/rollup-plugin-html": "^2.0.0",
+    "esbuild": "^0.18.3",
+    "rollup": "^2.79.1",
+    "rollup-plugin-minify-html-literals": "^1.2.6",
+    "rollup-plugin-summary": "^2.0.0",
+    "todomvc-app-css": "^2.4.2",
+    "typescript": "^5.0.4"
+  },
+  "dependencies": {
+    "lit": "^3.0.0-pre.0",
+    "tslib": "^2.5.2"
+  },
+  "wireit": {
+    "serve": {
+      "dependencies": [
+        "build",
+        "esbuild"
+      ],
+      "files": [
+        "web-dev-server.config.js"
+      ],
+      "service": true,
+      "command": "wds"
+    },
+    "serve:prod": {
+      "dependencies": [
+        "build",
+        "esbuild",
+        "rollup"
+      ],
+      "files": [
+        "web-dev-server.config.js"
+      ],
+      "service": true,
+      "command": "wds"
+    },
+    "build": {
+      "files": [
+        "src/**/*.ts",
+        "tsconfig.json"
+      ],
+      "output": [
+        "index.js",
+        "index.js.map",
+        "lib",
+        ".tsbuildinfo"
+      ],
+      "clean": false,
+      "command": "tsc"
+    },
+    "esbuild": {
+      "files": [
+        "src/**/*.ts"
+      ],
+      "output": [
+        "esbuild/index.js"
+      ],
+      "command": "esbuild --target=es2022 src/index.ts --bundle --minify --outfile=esbuild/index.js"
+    },
+    "rollup": {
+      "files": [
+        "src/**/*.ts",
+        "rollup.config.mjs"
+      ],
+      "output": [
+        "rollup/index.js"
+      ],
+      "command": "rollup --config rollup.config.mjs"
+    }
+  }
+}
