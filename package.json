@@ -55,6 +55,7 @@
     "run-sequence": "^1.0.1",
     "serve-favicon": "^2.3.0",
     "start-server-and-test": "^1.0.0",
-    "vinyl-fs": "github:gulpjs/vinyl-fs#59386ca"
+    "vinyl-fs": "github:gulpjs/vinyl-fs#59386ca",
+    "wireit": "^0.9.5"
   }
 }

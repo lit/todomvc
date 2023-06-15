@@ -20,9 +20,8 @@ Mutations are made centrally by the app component. Other components fire events 
 
 1. `cd examples/lit`
 2. `npm ci`
-3. `npm run build`
-4. `npm run serve`
-5. Navigate your browser to http://localhost:8000
+3. `npm run serve --watch`
+4. Navigate your browser to http://localhost:8000
 
 ## TODO
 
@@ -31,4 +30,3 @@ Mutations are made centrally by the app component. Other components fire events 
 3.  Check focus and tab behavior
 4.  Add Rollup build that chooses production Lit build and creates a single JS file
 5.  Check-in node dependencies like other implementations?
-6.  Add Wireit?
