@@ -1,6 +1,7 @@
 import { LitElement, html, css, nothing } from "lit";
 import { customElement } from "lit/decorators/custom-element.js";
 import { property } from "lit/decorators/property.js";
+import { repeat } from "lit/directives/repeat.js";
 
 import { todoStyles } from "./todo.css.js";
 import { TodoFilter, Todos } from "./todos.js";
@@ -20,7 +21,7 @@ export class TodoList extends LitElement {
 		`,
 	];
 
-  @updateOnEvent('change')
+	@updateOnEvent("change")
 	@property({ attribute: false })
 	todoList?: Todos;
 
@@ -41,8 +42,10 @@ export class TodoList extends LitElement {
 				  `
 				: nothing}
 			<ul class="todo-list">
-				${this.todoList?.all.map(
-					(todo) => html` <todo-item .todo=${todo}></todo-item> `
+				${repeat(
+					this.todoList?.filtered(this.filter) ?? [],
+					(todo) => todo.id,
+					(todo) => html`<todo-item .todo=${todo}></todo-item>`
 				)}
 			</ul>
 		`;
@@ -53,9 +56,8 @@ export class TodoList extends LitElement {
 	}
 }
 
-
 declare global {
 	interface HTMLElementTagNameMap {
-		"todo-list": TodoList
+		"todo-list": TodoList;
 	}
 }
